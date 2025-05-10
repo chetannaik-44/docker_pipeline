@@ -2,9 +2,4 @@ stages:
 - stage: dockerbuild
   displayName: "Docker Build"
   jobs:
-  - template: ../jobs/dockerversioncheck.yml
-  - template: ../jobs/dockerlogin.yml
   - template: ../jobs/dockerbuild.yml
-  - template: ../jobs/dockertest.yml
-  - template: ../jobs/dockerpush.yml
-  - template: ../jobs/dockerclean.yml

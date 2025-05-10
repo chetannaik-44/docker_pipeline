@@ -8,7 +8,36 @@ jobs:
     clean: all
   steps:
   - script: |
+      echo "Checking Docker version..."
+      docker --version
+    displayName: 'Check Docker Version'
+  - script: |
+      echo "docker login"
+      echo "$(DOCKER_PASSWORD)" | docker login $(dockerRegistry) --username "$(DOCKER_USERNAME)" --password-stdin
+    displayName: 'Docker Login'
+    env:
+        DOCKER_USERNAME: $(DOCKER_USERNAME)
+        DOCKER_PASSWORD: $(DOCKER_PASSWORD)
+  - script: |
       echo "docker build"
       cd $(Build.Repository.LocalPath)/.pipelines/script/docker
       docker build -t $(dockerRegistry)/$(dockerImageName):$(dockerImageTag) .
     displayName: 'Docker Build'
+  
+  - script: |
+      docker run -d -p 8080:80 --name test-apache $(dockerRegistry)/$(dockerImageName):$(dockerImageTag)
+      sleep 5
+      curl -f http://localhost:8080 || (echo "Apache test failed!" && exit 1)
+      docker stop test-apache && docker rm test-apache
+    displayName: 'Docker Test Apache Container'
+
+  - script: |
+      docker push $(dockerRegistry)/$(dockerImageName):$(dockerImageTag)
+    displayName: 'Docker Push'
+
+  - script: |
+      echo "docker clean"
+      docker stop $(docker ps -q)
+      docker rm $(docker ps -aq)
+      docker rmi -f $(docker images -q)
+    displayName: 'Docker Cleanup'
