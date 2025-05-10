@@ -20,18 +20,18 @@ jobs:
   - script: |
       echo "docker build"
       cd $(Build.Repository.LocalPath)/.pipelines/script/docker
-      docker build -t $(dockerRegistry)/$(dockerImageName):$(dockerImageTag) .
+      docker build -t $(dockerImageName):$(dockerImageTag) .
     displayName: 'Docker Build'
   
   - script: |
-      docker run -d -p 8080:80 --name test-apache $(dockerRegistry)/$(dockerImageName):$(dockerImageTag)
+      docker run -d -p 8080:80 --name test-apache $(dockerImageName):$(dockerImageTag)
       sleep 5
       curl -f http://localhost:8080 || (echo "Apache test failed!" && exit 1)
       docker stop test-apache && docker rm test-apache
     displayName: 'Docker Test Apache Container'
 
   - script: |
-      docker push $(dockerRegistry)/$(dockerImageName):$(dockerImageTag)
+      docker push $(dockerImageName):$(dockerImageTag)
     displayName: 'Docker Push'
 
   - script: |
