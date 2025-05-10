@@ -15,8 +15,8 @@ jobs:
       echo "$(DOCKER_PASSWORD)" | docker login $(dockerRegistry) --username "$(DOCKER_USERNAME)" --password-stdin
     displayName: 'Docker Login'
     env:
-        DOCKER_USERNAME: $(DOCKER_USERNAME)
-        DOCKER_PASSWORD: $(DOCKER_PASSWORD)
+      DOCKER_USERNAME: $(docker_user)
+      DOCKER_PASSWORD: $(docker_password)
   - script: |
       echo "docker build"
       cd $(Build.Repository.LocalPath)/.pipelines/script/docker
