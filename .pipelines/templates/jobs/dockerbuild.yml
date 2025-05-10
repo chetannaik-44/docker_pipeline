@@ -33,6 +33,9 @@ jobs:
   - script: |
       docker push $(dockerImageName):$(dockerImageTag)
     displayName: 'Docker Push'
+    env:
+      DOCKER_USERNAME: $(docker_user)
+      DOCKER_PASSWORD: $(docker_pasword)
 
   - script: |
       echo "docker clean"
