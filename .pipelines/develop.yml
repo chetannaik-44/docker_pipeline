@@ -5,7 +5,7 @@ trigger:
 
 variables:
   - group: default_credentials
-  - template: ../vars/vars.yml
+  - template: template/vars/vars.yml
 
 stages:
   - template: templates/stages/build_stage.yml
