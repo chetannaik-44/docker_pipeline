@@ -1,6 +1,6 @@
 variables:
   - name: dockerRegistry
-    value: 'https://index.docker.io/v1/'
+    value: 'https://index.docker.io/v1'
   - name: dockerImageName
     value: 'chetannaik44/demo'
   - name: dockerImageTag
