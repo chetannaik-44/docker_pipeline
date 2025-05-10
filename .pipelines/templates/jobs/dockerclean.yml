@@ -3,7 +3,7 @@ jobs:
     dependsOn: dockertest
     displayName: "docker clean"
     pool:
-      vmImage: '$(pool_name)'
+      name: '$(pool_name)'
     workspace:
       clean: all
     steps:
