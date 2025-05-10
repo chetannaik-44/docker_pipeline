@@ -12,7 +12,7 @@ jobs:
     displayName: 'Check Docker Version'
   - script: |
       echo "docker login"
-      echo "$(DOCKER_PASSWORD)" | docker login $(dockerRegistry) --username "$(DOCKER_USERNAME)" --password-stdin
+      echo "$DOCKER_PASSWORD" | docker login $(dockerRegistry) --username "$DOCKER_USERNAME" --password-stdin
     displayName: 'Docker Login'
     env:
       DOCKER_USERNAME: $(docker_user)
