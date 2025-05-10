@@ -1,10 +1,6 @@
 stages:
 - stage: dockerbuild
   displayName: "Docker Build"
-  pool:
-    vmImage: 'ubuntu-latest'
-  workspace:
-    clean: all
   jobs:
   - template: ../jobs/dockerversioncheck.yml
   - template: ../jobs/dockerlogin.yml

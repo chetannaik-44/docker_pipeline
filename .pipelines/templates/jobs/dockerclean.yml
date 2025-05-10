@@ -1,6 +1,10 @@
 jobs:
   - job: dockerclean
     displayName: "docker clean"
+    pool:
+      vmImage: '$(pool_name)'
+    workspace:
+      clean: all
     steps:
     - script: |
          echo "docker clean"

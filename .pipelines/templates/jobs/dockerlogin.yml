@@ -1,6 +1,10 @@
 jobs:
   - job: dockerlogin
     displayName: "docker login"
+    pool:
+      vmImage: '$(pool_name)'
+    workspace:
+      clean: all
     steps:
       - script: |
            echo "docker login"

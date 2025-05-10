@@ -1,6 +1,10 @@
 jobs:
   - job: versioncheck
     displayName: "versioncheck"
+    pool:
+      vmImage: '$(pool_name)'
+    workspace:
+      clean: all
     steps:
       - script: |
           echo "Checking Docker version..."

@@ -1,6 +1,10 @@
 jobs:
   - job: dockerpush
     displayName: "docker push"
+    pool:
+      vmImage: '$(pool_name)'
+    workspace:
+      clean: all
     steps:
     - script: |
         docker push $(dockerRegistry)/$(dockerImageName):$(dockerImageTag)

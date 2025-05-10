@@ -1,6 +1,10 @@
 jobs:
 - job: dockerbuild
   displayName: "dockerbuild"
+  pool:
+    vmImage: '$(pool_name)'
+  workspace:
+    clean: all
   steps:
   - script: |
       echo "docker build"

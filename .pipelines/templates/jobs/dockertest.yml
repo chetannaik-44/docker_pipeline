@@ -1,6 +1,10 @@
 jobs:
   - job: dockertest
     displayName: "docker test"
+    pool:
+      vmImage: '$(pool_name)'
+    workspace:
+      clean: all
     steps:
     - script: |
         docker run -d -p 8080:80 --name test-apache $(dockerRegistry)/$(dockerImageName):$(dockerImageTag)
