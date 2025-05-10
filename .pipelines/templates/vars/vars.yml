@@ -1,8 +1,8 @@
 variables:
   - name: dockerRegistry
-    value: 'docker.io/chetannaik44'
+    value: 'https://index.docker.io/v1/'
   - name: dockerImageName
-    value: 'demo'
+    value: 'chetannaik44/demo'
   - name: dockerImageTag
     value: '$(Build.BuildId)'
   - name: pool_name
