@@ -1,5 +1,6 @@
 jobs:
   - job: dockerlogin
+    dependsOn: versioncheck
     displayName: "docker login"
     pool:
       vmImage: '$(pool_name)'

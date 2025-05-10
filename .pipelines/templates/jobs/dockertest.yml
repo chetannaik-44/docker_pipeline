@@ -1,5 +1,6 @@
 jobs:
   - job: dockertest
+    dependsOn: dockerbuild
     displayName: "docker test"
     pool:
       vmImage: '$(pool_name)'
