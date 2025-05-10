@@ -1,0 +1,9 @@
+jobs:
+- job: dockerbuild
+  displayName: "dockerbuild"
+  steps:
+  - script: |
+      echo "docker build"
+      cd $(Build.Repository.LocalPath)/.pipelines/script/docker
+      docker build -t $(dockerRegistry)/$(dockerImageName):$(dockerImageTag) .
+    displayName: 'Docker Build'

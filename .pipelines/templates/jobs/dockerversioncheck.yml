@@ -1,0 +1,9 @@
+jobs:
+  - job: versioncheck
+    displayName: "versioncheck"
+    steps:
+      - script: |
+          echo "Checking Docker version..."
+          docker --version
+        displayName: 'Check Docker Version'
+        

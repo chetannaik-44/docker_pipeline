@@ -1,0 +1,7 @@
+jobs:
+  - job: dockerpush
+    displayName: "docker push"
+    steps:
+    - script: |
+        docker push $(dockerRegistry)/$(dockerImageName):$(dockerImageTag)
+      displayName: 'Docker Push'

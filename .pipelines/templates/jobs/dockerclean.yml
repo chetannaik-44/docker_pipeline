@@ -1,0 +1,9 @@
+jobs:
+  - job: dockerclean
+    displayName: "docker clean"
+    steps:
+    - script: |
+         echo "docker clean"
+         docker rmi $(dockerRegistry)/$(dockerImageName):$(dockerImageTag)
+         docker system prune -f
+      displayName: 'Docker Cleanup'

@@ -1,0 +1,10 @@
+jobs:
+  - job: dockertest
+    displayName: "docker test"
+    steps:
+    - script: |
+        docker run -d -p 8080:80 --name test-apache $(dockerRegistry)/$(dockerImageName):$(dockerImageTag)
+        sleep 5
+        curl -f http://localhost:8080 || (echo "Apache test failed!" && exit 1)
+        docker stop test-apache && docker rm test-apache
+      displayName: 'Docker Test Apache Container'

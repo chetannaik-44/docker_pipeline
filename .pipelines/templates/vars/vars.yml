@@ -1,0 +1,9 @@
+variables:
+  - name: dockerRegistry
+    value: 'docker.io/chetannaik44'
+  - name: dockerImageName
+    value: 'demo'
+  - name: dockerImageTag
+    value: '$(Build.BuildId)'
+  - name: pool_name
+    value: 'ubuntu-latest'

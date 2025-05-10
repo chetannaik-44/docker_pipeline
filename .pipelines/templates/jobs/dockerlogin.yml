@@ -1,0 +1,11 @@
+jobs:
+  - job: dockerlogin
+    displayName: "docker login"
+    steps:
+      - script: |
+           echo "docker login"
+           echo "$(DOCKER_PASSWORD)" | docker login $(dockerRegistry) --username "$(DOCKER_USERNAME)" --password-stdin
+           displayName: 'Docker Login'
+        env:
+           DOCKER_USERNAME: $(DOCKER_USERNAME)
+           DOCKER_PASSWORD: $(DOCKER_PASSWORD)
