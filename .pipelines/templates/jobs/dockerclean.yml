@@ -1,5 +1,6 @@
 jobs:
   - job: dockerclean
+    dependsOn: dockertest
     displayName: "docker clean"
     pool:
       vmImage: '$(pool_name)'
