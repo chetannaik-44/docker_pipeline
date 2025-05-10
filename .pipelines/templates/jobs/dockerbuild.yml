@@ -1,6 +1,5 @@
 jobs:
 - job: dockerbuild
-  dependsOn: dockerlogin
   displayName: "dockerbuild"
   pool:
     name: '$(pool_name)'
