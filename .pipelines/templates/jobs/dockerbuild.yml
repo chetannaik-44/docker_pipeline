@@ -12,12 +12,11 @@ jobs:
     displayName: 'Check Docker Version'
   - script: |
       echo "docker login"
-      echo "$DOCKER_USERNAME"
       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     displayName: 'Docker Login'
     env:
       DOCKER_USERNAME: $(docker_user)
-      DOCKER_PASSWORD: $(docker_password)
+      DOCKER_PASSWORD: $(docker_pasword)
   - script: |
       echo "docker build"
       cd $(Build.Repository.LocalPath)/.pipelines/script/docker
