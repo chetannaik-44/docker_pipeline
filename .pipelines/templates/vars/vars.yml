@@ -6,4 +6,4 @@ variables:
   - name: dockerImageTag
     value: '$(Build.BuildId)'
   - name: pool_name
-    value: 'wsl'
+    value: 'dev'
